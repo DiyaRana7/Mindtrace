@@ -1,0 +1,54 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eff6ff">
+  <meta name="description" content="Explore your personality through ten thoughtful, imaginative questions.">
+  <title>MindTrace · A little more you</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='theme.css') }}">
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="#home" aria-label="MindTrace home"><span class="brand-mark">🕵️</span><span>MIND<b>TRACE</b></span></a><div class="top-stepper" aria-label="Assessment progress"><span class="top-step active" data-step="0"><i>01</i> Personality</span><span class="step-line"></span><span class="top-step" data-step="1"><i>02</i> First Instinct</span><span class="step-line"></span><span class="top-step" data-step="2"><i>03</i> Your Report</span></div><span class="top-note">PRIVATE SELF-DISCOVERY</span></header>
+  <main class="page-wrap">
+    <section id="home" class="panel welcome">
+      <div class="welcome-hero">
+        <div class="welcome-copy">
+          <div class="project-title" aria-label="MindTrace">MIND<span>TRACE</span></div>
+          <div class="eyebrow"><span>✦</span> YOUR PERSONALITY, A LITTLE CLOSER</div>
+          <h1>Discover what<br><span class="hero-highlight">makes you <em>you.</em></span></h1>
+          <p class="intro">A thoughtful assessment, ten gut reactions, and one beautifully personal report. Take a breath and answer as yourself.</p>
+        </div>
+        <div class="hero-photo"><img src="{{ url_for('static', filename='runner-photo.jpg') }}" alt="David Goggins running at the beach, wearing race bib 88"><span>STAY HARD</span></div>
+      </div>
+      <div class="steps"><div class="step"><span class="step-number step-blue">🧠</span><span><strong>01 &nbsp; Deep personality assessment</strong><small>10 thoughtful situations. Choose what feels genuinely like you.</small></span><span class="step-check">✓</span></div><div class="step"><span class="step-number step-cyan">⚡</span><span><strong>02 &nbsp; First Instinct Challenge</strong><small>10 quick either-or choices. Trust your gut.</small></span><span class="step-check">✓</span></div><div class="step"><span class="step-number step-violet">✨</span><span><strong>03 &nbsp; Your personal report</strong><small>Discover patterns from both parts of your assessment.</small></span><span class="step-check">✓</span></div></div>
+      <aside class="instruction"><strong>💡 A little reminder</strong><p>There are no right or wrong answers. Choose what truly reflects you, not what sounds impressive.</p></aside>
+      <button class="primary-button" id="start-button">Begin my assessment <span>→</span></button>
+      <div class="privacy-note">10 THOUGHTFUL QUESTIONS <span>·</span> 10 QUICK CHOICES <span>·</span> ONE PERSONAL REPORT</div>
+    </section>
+    <section id="quiz" class="panel quiz hidden" aria-live="polite">
+      <div class="quiz-top"><a class="back-link" id="home-link" href="#home">← &nbsp;BACK</a><span id="quiz-counter" class="quiz-counter"></span><span class="private-label">YOUR PRIVATE ASSESSMENT</span></div>
+      <div class="progress-track"><div id="progress-fill" class="progress-fill"></div></div>
+      <div class="question-content"><div id="question-category" class="eyebrow"></div><h1 id="question-title"></h1><p class="question-hint">Choose the response you would genuinely make. There are no wrong answers.</p><div id="answers" class="answers" role="group" aria-label="Choose the answer that best describes you"></div><div class="question-footer"><span>Your first instinct is often the most honest.</span><span>CHOOSE ONE TO CONTINUE</span></div></div>
+    </section>
+    <section id="challenge" class="panel quiz hidden" aria-live="polite">
+      <div class="quiz-top"><a class="back-link" id="challenge-back" href="#quiz">← &nbsp;BACK</a><span id="challenge-counter" class="quiz-counter"></span><span class="private-label">FIRST INSTINCT · NO WRONG ANSWERS</span></div>
+      <div class="progress-track"><div id="challenge-progress" class="progress-fill"></div></div>
+      <div class="question-content"><div class="eyebrow">⚡ FIRST INSTINCT CHALLENGE</div><h1 id="challenge-title"></h1><p class="question-hint">Don't overthink it. Which one would you pick?</p><div id="challenge-answers" class="answers" role="group" aria-label="Choose your first instinct"></div><div class="question-footer"><span>There are no right or wrong answers.</span><span>CHOOSE YOUR GUT REACTION</span></div></div>
+    </section>
+    <section id="results" class="panel report hidden" aria-live="polite">
+      <div class="eyebrow">YOUR PERSONAL REFLECTION</div><h1 id="report-title">Here’s what makes you <em>you.</em></h1><p id="report-intro" class="intro"></p>
+      <div class="profile-badge" id="profile-badge"></div>
+      <section class="report-section"><div class="section-number">01 — YOUR PERSONALITY PATTERNS</div><h2>🧠 The qualities in your answers</h2><p class="section-copy">Your thoughtful assessment and first instincts both help shape this reflective five-trait snapshot.</p><div id="trait-list" class="trait-list"></div></section>
+      <section class="report-section"><div class="section-number">02 — A CLOSER LOOK</div><h2>🔎 What might come naturally to you</h2><div id="insights" class="insights"></div></section>
+      <section class="report-section"><div class="section-number">03 — A FEW THINGS TO TRY</div><h2>✨ Ideas to explore at your own pace</h2><div id="hobbies" class="hobbies"></div></section>
+      <aside class="reflection"><div class="section-number">💭 A QUESTION TO KEEP</div><p id="reflection"></p></aside>
+      <p class="disclaimer">This is a reflection tool, not a clinical diagnosis or scientifically validated personality test. People are more complex than ten answers. Take what resonates and leave the rest.</p>
+      <div class="report-actions"><button class="primary-button" id="download-button">Save my report <span>↓</span></button><button class="secondary-button" id="restart-button">Start a fresh assessment ↗</button></div>
+    </section>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
